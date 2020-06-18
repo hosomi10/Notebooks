@@ -3,10 +3,10 @@ Jetson Nano
 Collision_avoidance
 
 classification results(6/13)
----
+===
 
 banana.jpg(224x224 and 300x300)
-===
+---
 * mobilenet(model_test.py)  
 954: 'banana', 				31.62  
 502: 'clog, geta, patten, sabot', 19.17  
@@ -30,7 +30,7 @@ Probability=0.5234375
 Location=(54,5)-(267,199)  
 
 orange1.jpg
-===
+---
 * mobilenet  
 722: 'ping-pong ball', 	66.45  
 950: 'orange', 		24.56  

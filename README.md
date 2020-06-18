@@ -38,7 +38,7 @@ orange1.jpg
 674: 'mousetrap', 	0.58  
 951: 'lemon', 			0.46
 
-* alexnet
+* alexnet  
 722: 'ping-pong ball', 	86.51  
 950: 'orange', 		1.78  
 522: 'croquet ball', 	1.32  

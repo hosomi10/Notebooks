@@ -1,6 +1,9 @@
 # Notebooks
 Jetson Nano
-Collision_avoidance
+Collision_avoidance  
+  
+Create data folder for pictures of 224 x 224 pixels and 300 x 300 pixels.  
+Upload alexnet, mobilenet, and tflite runtime classification folders in test folder  
 
 classification results(6/13)
 ===

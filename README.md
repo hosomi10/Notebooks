@@ -2,25 +2,26 @@
 Jetson Nano
 Collision_avoidance
 
-classification results
+classification results(6/13)
+---
 
 banana.jpg(224x224 and 300x300)
 ===
-* mobilenet  
+* mobilenet(model_test.py)  
 954: 'banana', 				31.62  
 502: 'clog, geta, patten, sabot', 19.17  
 666: 'mortar', 				10.36  
 659: 'mixing bowl', 			6.30  
 464: 'buckle', 				4.60
 
-* alexnet  
+* alexnet(alexnet_model_test.py)  
 954: 'banana', 			59.43  
 666: 'mortar', 			9.54  
 943: 'cucumber, cuke', 	2.18  
 939: 'zucchini, courgette', 	2.08  
 941: 'acorn squash', 		2.02  
 
-* tflite-runtime  
+* tflite-runtime(tflite_detect_loop_cv.py)  
 Class=banana  
 Probability=0.5625  
 Location=(83,107)-(217,186)  

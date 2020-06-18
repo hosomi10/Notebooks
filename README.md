@@ -24,7 +24,6 @@ banana.jpg(224x224 and 300x300)
 Class=banana  
 Probability=0.5625  
 Location=(83,107)-(217,186)  
-
 Class=chair  
 Probability=0.5234375  
 Location=(54,5)-(267,199)  
@@ -49,11 +48,9 @@ orange1.jpg
 Class=orange  
 Probability=0.79296875  
 Location=(97,117)-(188,238)  
-
 Class=chair  
 Probability=0.57421875  
 Location=(37,23)-(264,226)  
-
 Class=dining table  
 Probability=0.55078125
 Location=(-6,138)-(297,299)  

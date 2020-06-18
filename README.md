@@ -4,6 +4,13 @@ Collision_avoidance
   
 Create 'data' folder for pictures of 224 x 224 pixels and 300 x 300 pixels.  
 Upload alexnet, mobilenet, and tflite runtime classification folders in 'test' folder  
+  
+Tasks
+===
+* Check memory pressure while executing alexnet,mobilenet,tflite on Jetbot.  
+* Decide capture image size(300x300 or 300x400)
+* Mapping (path search) by using another camera?
+* Determine an object is near/far, from an image
 
 classification results(6/13)
 ===

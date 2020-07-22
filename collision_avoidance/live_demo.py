@@ -4,10 +4,12 @@ bar = tqdm(total = 8)
 
 def update_bar(update_val,display_text):
     bar.update(update_val)
-    bar.set_description(display_text)
+    #bar.set_description(display_text)
+    print(display_text)
 
 #Pytorch modelの初期化
-bar.set_description('initialize the PyTorch model')
+bar.set_description('live demo')
+print('initialize pytorch model')
 
 #Pillow 7.0.0 のエラー回避
 import PIL
@@ -57,17 +59,15 @@ def preprocess(camera_value):
 update_bar(1,'start and display our camera')
 
 import traitlets
-from IPython.display import display
-import ipywidgets.widgets as widgets
+#from IPython.display import display
+#import ipywidgets.widgets as widgets
 from jetbot import Camera, bgr8_to_jpeg
 
-camera = Camera.instance(width=224, height=224)
-image = widgets.Image(format='jpeg', width=224, height=224)
-blocked_slider = widgets.FloatSlider(description='blocked', min=0.0, max=1.0, orientation='vertical')
-
-camera_link = traitlets.dlink((camera, 'value'), (image, 'value'), transform=bgr8_to_jpeg)
-
-display(widgets.HBox([image, blocked_slider]))
+camera = Camera.instance(width=300, height=224)
+#image = widgets.Image(format='jpeg', width=224, height=224)
+#blocked_slider = widgets.FloatSlider(description='blocked', min=0.0, max=1.0, orientation='vertical')
+#camera_link = traitlets.dlink((camera, 'value'), (image, 'value'), transform=bgr8_to_jpeg)
+#display(widgets.HBox([image, blocked_slider]))
 
 #robotインスタンス生成
 update_bar(1,'create our robot instance')
@@ -75,6 +75,53 @@ update_bar(1,'create our robot instance')
 from jetbot import Robot
 
 robot = Robot()
+
+#tkinter生成
+import tkinter
+
+#動作停止用関数の定義
+def stop_demo():
+    camera.unobserve(update, names='value')
+    robot.stop()
+
+#GUIの作成
+if __name__ == "__main__":
+    root = tkinter.Tk()
+    
+    #変数の設定
+    var = tkinter.DoubleVar(
+        master=root,
+        value=0.500,
+    )
+
+    #現在値表示用ラベルの設定
+    l = tkinter.Label(
+        master=root,
+        width=50,
+        textvariable=var,
+    )
+    l.pack()
+
+    #スケールの設定
+    s = tkinter.Scale(
+        master=root,
+        orient="horizon",
+        showvalue=False,
+        variable=var,
+        from_=0.0,
+        to=1.0,
+        resolution=0.001,
+        length=200,
+        )
+    s.pack()
+
+    #ボタンの設定
+    b = tkinter.Button(
+        text='Stop　JETBOT',
+        width=20,
+        command=stop_demo,
+        )
+    b.pack()
 
 #カメラupdate時の処理(Main処理定義)
 update_bar(1,'create a function that will get called whenever the cameras value changes')
@@ -85,15 +132,16 @@ import time
 def update(change):
     global blocked_slider, robot
     x = change['new'] 
+    x = x[0 : 224, 38 : 262]
     x = preprocess(x)
-    y = model(x)
+    y = model(x) 
     
     # we apply the `softmax` function to normalize the output vector so it sums to 1 (which makes it a probability distribution)
-    y = F.softmax(y, dim=1)
+    y = F.softmax(y, dim = 1)
     
     prob_blocked = float(y.flatten()[0])
     
-    blocked_slider.value = prob_blocked
+    var.set(prob_blocked)
     
     if prob_blocked < 0.5:
         robot.forward(0.3)
@@ -110,3 +158,6 @@ update_bar(1,'attach function to the camera for processing')
 camera.observe(update, names='value')  # this attaches the 'update' function to the 'value' traitlet of our camera
 
 update_bar(1,'Complete!')
+
+#GUIを表示し続ける
+root.mainloop()

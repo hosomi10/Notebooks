@@ -4,8 +4,8 @@ bar = tqdm(total = 8)
 
 def update_bar(update_val,display_text):
     bar.update(update_val)
-    #bar.set_description(display_text)
-    print(display_text)
+    bar.set_description(display_text)
+    #print(display_text)
 
 #Pytorch modelの初期化
 bar.set_description('live demo')
@@ -46,7 +46,7 @@ normalize = torchvision.transforms.Normalize(mean, stdev)
 
 def preprocess(camera_value):
     global device, normalize
-    x = camera_value
+    x = camera_value[0:224, 38:262]
     x = cv2.cvtColor(x, cv2.COLOR_BGR2RGB)
     x = x.transpose((2, 0, 1))
     x = torch.from_numpy(x).float()
@@ -132,7 +132,6 @@ import time
 def update(change):
     global blocked_slider, robot
     x = change['new'] 
-    x = x[0 : 224, 38 : 262]
     x = preprocess(x)
     y = model(x) 
     
@@ -143,7 +142,7 @@ def update(change):
     
     var.set(prob_blocked)
     
-    if prob_blocked < 0.5:
+    if prob_blocked < 0.6:
         robot.forward(0.3)
     else:
         robot.left(0.3)

@@ -63,7 +63,7 @@ import traitlets
 #import ipywidgets.widgets as widgets
 from jetbot import Camera, bgr8_to_jpeg
 
-camera = Camera.instance(width=300, height=224)
+camera = Camera.instance(width=300, height=224, fps=15)
 #image = widgets.Image(format='jpeg', width=224, height=224)
 #blocked_slider = widgets.FloatSlider(description='blocked', min=0.0, max=1.0, orientation='vertical')
 #camera_link = traitlets.dlink((camera, 'value'), (image, 'value'), transform=bgr8_to_jpeg)
@@ -76,14 +76,17 @@ from jetbot import Robot
 
 robot = Robot()
 
+"""
 #tkinter生成
 import tkinter
+"""
 
 #動作停止用関数の定義
 def stop_demo():
     camera.unobserve(update, names='value')
     robot.stop()
-
+    
+"""
 #GUIの作成
 if __name__ == "__main__":
     root = tkinter.Tk()
@@ -122,7 +125,7 @@ if __name__ == "__main__":
         command=stop_demo,
         )
     b.pack()
-
+"""
 #カメラupdate時の処理(Main処理定義)
 update_bar(1,'create a function that will get called whenever the cameras value changes')
 
@@ -140,7 +143,7 @@ def update(change):
     
     prob_blocked = float(y.flatten()[0])
     
-    var.set(prob_blocked)
+    #var.set(prob_blocked)
     
     if prob_blocked < 0.6:
         robot.forward(0.3)
@@ -158,5 +161,18 @@ camera.observe(update, names='value')  # this attaches the 'update' function to 
 
 update_bar(1,'Complete!')
 
+print('press Ctrl+C to stop robot')
+
+try:
+    while True:
+        time.sleep(5)
+        print('processing')
+
+except KeyboardInterrupt:
+    print('Robot stop')
+    #停止すべき処理
+    #need camera and motor proces release
+    stop_demo()
+
 #GUIを表示し続ける
-root.mainloop()
+#root.mainloop()

@@ -84,7 +84,10 @@ import tkinter
 #動作停止用関数の定義
 def stop_demo():
     camera.unobserve(update, names='value')
+    time.sleep(1)
     robot.stop()
+    time.sleep(1)
+    camera.stop()
     
 """
 #GUIの作成

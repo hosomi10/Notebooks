@@ -1,5 +1,4 @@
 from tqdm import tqdm
-from jetbot import Robot
 import torch
 import torchvision
 import cv2
@@ -42,6 +41,7 @@ camera = Camera.instance(width=300, height=224, fps=15)
 update_bar(1,'create a function stop demo')
 def stop_demo():
     camera.unobserve(update, names='value')
+    camera.stop()
 
 #カメラupdate時の処理(Main処理定義)
 update_bar(1,'create a function that will get called whenever the cameras value changes')
@@ -63,8 +63,16 @@ try:
     while True:
         time.sleep(5)
         print('processing')
+        #key = cv2.waitKey(10)
+        #if key == 27: #escape key
+            #print('esc pressed')
+            #break
 
 except KeyboardInterrupt:
     print('Camera stop')
-    #停止すべき処理
-    stop_demo()
+
+#停止すべき処理
+stop_demo()
+print('End')
+quit()
+

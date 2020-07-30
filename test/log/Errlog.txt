@@ -1,0 +1,229 @@
+jetbot@jetbot:~$ cd Notebooks/collision_avoidance/
+jetbot@jetbot:~/Notebooks/collision_avoidance$ ls
+best_model.pth         live_demo.ipynb   self_demo.ipynb
+CameraSnap.ipynb       live_demo.py      self_demo_joypad.ipynb
+data_collection.ipynb  local_test.ipynb  train_model.ipynb
+dataset                log
+dataset_2020_0612.zip  old
+jetbot@jetbot:~/Notebooks/collision_avoidance$ python3 live_demo.py 
+live demo:   0%|                                          | 0/8 [00:00<?, ?it/s]initialize pytorch model
+start and display our camera:  50%|███████▌       | 4/8 [00:21<00:16,  4.23s/it]GST_ARGUS: Creating output stream
+CONSUMER: Waiting until producer is connected...
+GST_ARGUS: Available Sensor modes :
+GST_ARGUS: 3280 x 2464 FR = 21.000000 fps Duration = 47619048 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 3280 x 1848 FR = 28.000001 fps Duration = 35714284 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1920 x 1080 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 59.999999 fps Duration = 16666667 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 120.000005 fps Duration = 8333333 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: Running with following settings:
+   Camera index = 0 
+   Camera mode  = 0 
+   Output Stream W = 3280 H = 2464 
+   seconds to Run    = 0 
+   Frame Rate = 21.000000 
+GST_ARGUS: PowerService: requested_clock_Hz=26518800
+GST_ARGUS: Setup Complete, Starting captures for 0 seconds
+GST_ARGUS: Starting repeat capture requests.
+CONSUMER: Producer has connected; continuing.
+Complete!: 100%|██████████████████████████████████| 8/8 [01:22<00:00, 16.47s/it]press Ctrl+C to stop robot
+processing
+processing
+processing
+^CRobot stop
+GST_ARGUS: Cleaning up
+GST_ARGUS: 
+PowerServiceHwVic::cleanupResources
+CONSUMER: Done Success
+GST_ARGUS: Done Success
+Complete!: 100%|██████████████████████████████████| 8/8 [01:53<00:00, 14.24s/it]
+jetbot@jetbot:~/Notebooks/collision_avoidance$ python3 live_demo.py 
+live demo:   0%|                                          | 0/8 [00:00<?, ?it/s]initialize pytorch model
+start and display our camera:  50%|███████▌       | 4/8 [00:20<00:17,  4.26s/it]GST_ARGUS: Creating output stream
+CONSUMER: Waiting until producer is connected...
+GST_ARGUS: Available Sensor modes :
+GST_ARGUS: 3280 x 2464 FR = 21.000000 fps Duration = 47619048 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 3280 x 1848 FR = 28.000001 fps Duration = 35714284 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1920 x 1080 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 59.999999 fps Duration = 16666667 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 120.000005 fps Duration = 8333333 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: Running with following settings:
+   Camera index = 0 
+   Camera mode  = 0 
+   Output Stream W = 3280 H = 2464 
+   seconds to Run    = 0 
+   Frame Rate = 21.000000 
+GST_ARGUS: PowerService: requested_clock_Hz=26518800
+GST_ARGUS: Setup Complete, Starting captures for 0 seconds
+GST_ARGUS: Starting repeat capture requests.
+CONSUMER: Producer has connected; continuing.
+Complete!: 100%|██████████████████████████████████| 8/8 [01:10<00:00, 13.36s/it]press Ctrl+C to stop robot
+processing
+processing
+processing
+^CRobot stop
+GST_ARGUS: Cleaning up
+GST_ARGUS: 
+PowerServiceHwVic::cleanupResources
+CONSUMER: Done Success
+GST_ARGUS: Done Success
+Complete!: 100%|██████████████████████████████████| 8/8 [01:43<00:00, 12.88s/it]
+jetbot@jetbot:~/Notebooks/collision_avoidance$ python3 live_demo.py 
+live demo:   0%|                                          | 0/8 [00:00<?, ?it/s]initialize pytorch model
+start and display our camera:  50%|███████▌       | 4/8 [00:20<00:17,  4.26s/it]GST_ARGUS: Creating output stream
+CONSUMER: Waiting until producer is connected...
+GST_ARGUS: Available Sensor modes :
+GST_ARGUS: 3280 x 2464 FR = 21.000000 fps Duration = 47619048 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 3280 x 1848 FR = 28.000001 fps Duration = 35714284 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1920 x 1080 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 59.999999 fps Duration = 16666667 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 120.000005 fps Duration = 8333333 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: Running with following settings:
+   Camera index = 0 
+   Camera mode  = 0 
+   Output Stream W = 3280 H = 2464 
+   seconds to Run    = 0 
+   Frame Rate = 21.000000 
+GST_ARGUS: PowerService: requested_clock_Hz=26518800
+GST_ARGUS: Setup Complete, Starting captures for 0 seconds
+GST_ARGUS: Starting repeat capture requests.
+CONSUMER: Producer has connected; continuing.
+Complete!: 100%|██████████████████████████████████| 8/8 [01:09<00:00, 13.09s/it]press Ctrl+C to stop robot
+processing
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.3.0-py3.6.egg/jetbot/camera.py", line 45, in _capture_frames
+    self.value = image
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 584, in __set__
+    self.set(obj, value)
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 573, in set
+    obj._notify_trait(self.name, old_value, new_value)
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 1205, in _notify_trait
+    type='change',
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 1210, in notify_change
+    return self._notify_observers(change)
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 1247, in _notify_observers
+    c(event)
+  File "live_demo.py", line 152, in update
+    robot.forward(0.3)
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.3.0-py3.6.egg/jetbot/robot.py", line 31, in forward
+    self.left_motor.value = speed
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 584, in __set__
+    self.set(obj, value)
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 573, in set
+    obj._notify_trait(self.name, old_value, new_value)
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 1205, in _notify_trait
+    type='change',
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 1210, in notify_change
+    return self._notify_observers(change)
+  File "/usr/local/lib/python3.6/dist-packages/traitlets/traitlets.py", line 1247, in _notify_observers
+    c(event)
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.3.0-py3.6.egg/jetbot/motor.py", line 24, in _observe_value
+    self._write_value(change['new'])
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.3.0-py3.6.egg/jetbot/motor.py", line 34, in _write_value
+    self._motor.run(Adafruit_MotorHAT.BACKWARD)
+  File "/usr/local/lib/python3.6/dist-packages/Adafruit_MotorHAT-1.4.0-py3.6.egg/Adafruit_MotorHAT/Adafruit_MotorHAT_Motors.py", line 204, in run
+    self.MC.setPin(self.IN2pin, 1)
+  File "/usr/local/lib/python3.6/dist-packages/Adafruit_MotorHAT-1.4.0-py3.6.egg/Adafruit_MotorHAT/Adafruit_MotorHAT_Motors.py", line 242, in setPin
+    self._pwm.setPWM(pin, 4096, 0)
+  File "/usr/local/lib/python3.6/dist-packages/Adafruit_MotorHAT-1.4.0-py3.6.egg/Adafruit_MotorHAT/Adafruit_PWM_Servo_Driver.py", line 88, in setPWM
+    self.i2c.write8(self.__LED0_ON_L+4*channel, on & 0xFF)
+  File "/usr/local/lib/python3.6/dist-packages/Adafruit_GPIO-1.0.3-py3.6.egg/Adafruit_GPIO/I2C.py", line 116, in write8
+    self._bus.write_byte_data(self._address, register, value)
+  File "/usr/local/lib/python3.6/dist-packages/Adafruit_PureIO-0.2.3-py3.6.egg/Adafruit_PureIO/smbus.py", line 256, in write_byte_data
+    self._device.write(data)
+OSError: [Errno 121] Remote I/O error
+
+
+^CRobot stop
+GST_ARGUS: Cleaning up
+GST_ARGUS: 
+PowerServiceHwVic::cleanupResources
+CONSUMER: Done Success
+GST_ARGUS: Done Success
+Complete!: 100%|██████████████████████████████████| 8/8 [04:48<00:00, 36.02s/it]
+jetbot@jetbot:~/Notebooks/collision_avoidance$ gedit live_demo.py 
+jetbot@jetbot:~/Notebooks/collision_avoidance$ cd ..
+jetbot@jetbot:~/Notebooks$ ls
+basic_motion    collision_avoidance  model            nano_cam_test.py  preprocess_test.py  tflite_detect
+camera_test.py  dataset              motor_test.py    object_detection  resize300_img.jpg   tflite_model
+clip_img.jpg    imageNet             nano224_img.jpg  object_following  teleoperation
+jetbot@jetbot:~/Notebooks$ python3 camera_test.py 
+start and display our camera:  33%|██████████████                            | 2/6 [00:00<00:00, 1617.55it/s]GST_ARGUS: Creating output stream
+CONSUMER: Waiting until producer is connected...
+GST_ARGUS: Available Sensor modes :
+GST_ARGUS: 3280 x 2464 FR = 21.000000 fps Duration = 47619048 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 3280 x 1848 FR = 28.000001 fps Duration = 35714284 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1920 x 1080 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 59.999999 fps Duration = 16666667 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 120.000005 fps Duration = 8333333 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: Running with following settings:
+   Camera index = 0 
+   Camera mode  = 0 
+   Output Stream W = 3280 H = 2464 
+   seconds to Run    = 0 
+   Frame Rate = 21.000000 
+GST_ARGUS: PowerService: requested_clock_Hz=26518800
+GST_ARGUS: Setup Complete, Starting captures for 0 seconds
+GST_ARGUS: Starting repeat capture requests.
+CONSUMER: Producer has connected; continuing.
+Complete!: 100%|███████████████████████████████████████████████████████████████| 6/6 [00:12<00:00,  1.98s/it]processing
+processing
+processing
+^CCamera stop
+GST_ARGUS: Cleaning up
+GST_ARGUS: 
+PowerServiceHwVic::cleanupResources
+CONSUMER: Done Success
+GST_ARGUS: Done Success
+
+(python3:20151): GLib-GObject-WARNING **: 16:08:10.055: invalid unclassed pointer in cast to 'GstElement'
+
+(python3:20151): GStreamer-CRITICAL **: 16:08:10.055: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+
+(python3:20151): GStreamer-CRITICAL **: 16:08:10.055: gst_element_get_bus: assertion 'GST_IS_ELEMENT (element)' failed
+
+(python3:20151): GStreamer-CRITICAL **: 16:08:10.055: gst_bus_have_pending: assertion 'GST_IS_BUS (bus)' failed
+
+(python3:20151): GStreamer-CRITICAL **: 16:08:10.055: gst_object_unref: assertion 'object != NULL' failed
+
+(python3:20151): GStreamer-CRITICAL **: 16:08:10.055: gst_object_unref: assertion '((GObject *) object)->ref_count > 0' failed
+OpenCV Error: Unspecified error (GStreamer: unable to start pipeline
+) in icvStartPipeline, file /home/nvidia/build_opencv/opencv/modules/videoio/src/cap_gstreamer.cpp, line 447
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/jetbot-0.3.0-py3.6.egg/jetbot/camera.py", line 43, in _capture_frames
+    re, image = self.cap.read()
+cv2.error: /home/nvidia/build_opencv/opencv/modules/videoio/src/cap_gstreamer.cpp:447: error: (-2) GStreamer: unable to start pipeline
+ in function icvStartPipeline
+
+
+End
+Complete!: 100%|███████████████████████████████████████████████████████████████| 6/6 [00:29<00:00,  4.96s/it]

@@ -86,7 +86,7 @@ csi_cam.start()
 #robotインスタンス生成
 update_bar(1,'create our robot instance')
 
-from jetbot import Robot
+from jetbot import thread_robot
 
 robot = Robot()
 

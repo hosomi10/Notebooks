@@ -91,8 +91,9 @@ class CSI_Camera:
             self.video_capture.release()
             self.video_capture = None
         # Kill the timer
-        self.fps_timer.cancel()
-        self.fps_timer.join()
+        if self.fps_timer != None:
+            self.fps_timer.cancel()
+            self.fps_timer.join()
         # Now kill the thread
         if self.read_thread != None:
             self.read_thread.join()

@@ -1,5 +1,6 @@
 from tqdm import tqdm
-from jetbot import Robot
+#from jetbot import Robot
+from jetbot import thread_robot
 import time
 
 #progress barの定義
@@ -11,20 +12,25 @@ def update_bar(update_val,display_text):
     
 #robotインスタンス生成
 update_bar(1,'create our robot instance')
-robot = Robot()
+robot = thread_robot.Robot()
 
 #動作停止用関数の定義
 def stop_demo():
     robot.stop()
-
+    #th_motor._release()
+    
 update_bar(1,'Complete!')
 
+#start motor thread
+#th_motor.motor_start()
+robot.start()
+
 #ロボット分岐用カウンタ
-c = 0
+c = 1
 
 try:
     while True:
-        c = c + 1
+        #c = c + 1
         if c%2 == 1:
             robot.forward(0.3)
         else:
@@ -36,4 +42,3 @@ except KeyboardInterrupt:
     print('motor stop')
     #停止すべき処理
     stop_demo()
-

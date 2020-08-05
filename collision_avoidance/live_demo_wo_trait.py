@@ -58,7 +58,7 @@ def preprocess(camera_value):
 #カメラ起動、画面表示(pyではwidgetが使えないため代替案検討)
 update_bar(1,'start and display our camera')
 
-import traitlets
+#import traitlets
 #from IPython.display import display
 #import ipywidgets.widgets as widgets
 from jetbot import bgr8_to_jpeg, csi_camera
@@ -72,7 +72,7 @@ sensor_id=0,
 #sensor_mode=3,
 display_width=300,
 display_height=224,
-framerate=21,
+framerate=15,
 flip_method=0,
 )
 
@@ -88,7 +88,8 @@ update_bar(1,'create our robot instance')
 
 from jetbot import thread_robot
 
-robot = Robot()
+robot = thread_robot.Robot()
+robot.start()
 
 """
 #tkinter生成
@@ -168,12 +169,14 @@ def update(change):
     else:
         robot.left(0.3)
     
-    time.sleep(0.048)
+    time.sleep(0.067)
 
 #処理とカメラの関連付け(処理実行)
 update_bar(1,'attach function to the camera for processing')
 
 #camera.observe(update, names='value')  # this attaches the 'update' function to the 'value' traitlet of our camera
+_ , csi_image=csi_cam.read() 
+update(csi_image) # we call the function once to intialize
 
 update_bar(1,'Complete!')
 
@@ -181,8 +184,8 @@ print('press Ctrl+C to stop robot')
 
 try:
     while True:
-        _ , csi_image=csi_cam.read()        
-        update(csi_image)  # we call the function once to intialize        
+        _ , csi_image=csi_cam.read()
+        update(csi_image)        
         #time.sleep(5)
         #print('processing')
 

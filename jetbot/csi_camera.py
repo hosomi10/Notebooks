@@ -76,6 +76,8 @@ class CSI_Camera:
                     self.frames_read += 1
             except RuntimeError:
                 print("Could not read image from camera")
+            except:
+                print("Could not update frames_read:", self.frames_read)
         # FIX ME - stop and cleanup thread
         # Something bad happened
         
@@ -96,7 +98,7 @@ class CSI_Camera:
             self.fps_timer.join()
         # Now kill the thread
         if self.read_thread != None:
-            self.read_thread.join()
+            self.read_thread.join(timeout=10)
 
     def update_fps_stats(self):
         self.last_frames_read=self.frames_read

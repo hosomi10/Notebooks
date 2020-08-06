@@ -1,6 +1,8 @@
 #progress barの定義
 from tqdm import tqdm
+from threading import Lock
 bar = tqdm(total = 8)
+softmax_lock = Lock()
 
 def update_bar(update_val,display_text):
     bar.update(update_val)
@@ -150,24 +152,21 @@ update_bar(1,'create a function that will get called whenever the cameras value 
 
 import torch.nn.functional as F
 import time
-
 def update(change):
     global blocked_slider, robot
+    softmax_lock.acquire()
     x = change #['new'] 
-    x = preprocess(x)
-    y = model(x) 
-    
+    x = preprocess(x)    
     # we apply the `softmax` function to normalize the output vector so it sums to 1 (which makes it a probability distribution)
+    y = model(x) 
     y = F.softmax(y, dim = 1)
-    
     prob_blocked = float(y.flatten()[0])
-    
-    #var.set(prob_blocked)
-    
+
     if prob_blocked < 0.6:
         robot.forward(0.3)
     else:
         robot.left(0.3)
+    softmax_lock.release()
     
     time.sleep(0.067)
 
@@ -181,19 +180,29 @@ update(csi_image) # we call the function once to intialize
 update_bar(1,'Complete!')
 
 print('press Ctrl+C to stop robot')
-
+t1 = time.time()
 try:
+    cnt = 0
     while True:
+        t2 = time.time()
         _ , csi_image=csi_cam.read()
-        update(csi_image)        
+        update(csi_image)
+        
+        if cnt % 100 == 0:
+            print("frames=", csi_cam.frames_read)
+        cnt += 1        
         #time.sleep(5)
         #print('processing')
+        if t2 - t1 > 60:
+            print("End by time")
+            break
 
 except KeyboardInterrupt:
     print('Robot stop')
-    #停止すべき処理
-    #need camera and motor proces release
-    stop_demo()
+#停止すべき処理
+#need camera and motor proces release
+cnt = 0
+stop_demo()
 
 #GUIを表示し続ける
 #root.mainloop()

@@ -4,6 +4,17 @@ from threading import Lock
 bar = tqdm(total = 8)
 softmax_lock = Lock()
 
+#2020/8/6 input(runtime) -> time[s] for live demo
+import sys
+print('How long do you want to run this program? [s]')
+runtime=input()
+
+if runtime.isnumeric() == True:
+    runtime = int(runtime)
+else:
+    print('input error start program again')
+    sys.exit()
+
 def update_bar(update_val,display_text):
     bar.update(update_val)
     bar.set_description(display_text)
@@ -72,9 +83,11 @@ csi_cam = csi_camera.CSI_Camera()
 csi_cam.create_gstreamer_pipeline(
 sensor_id=0,
 #sensor_mode=3,
+capture_width=3280,
+capture_height=2464,
 display_width=300,
 display_height=224,
-framerate=15,
+framerate=21,
 flip_method=0,
 )
 
@@ -106,47 +119,6 @@ def stop_demo():
     time.sleep(1)
     robot.stop()
 
-    
-"""
-#GUIの作成
-if __name__ == "__main__":
-    root = tkinter.Tk()
-    
-    #変数の設定
-    var = tkinter.DoubleVar(
-        master=root,
-        value=0.500,
-    )
-
-    #現在値表示用ラベルの設定
-    l = tkinter.Label(
-        master=root,
-        width=50,
-        textvariable=var,
-    )
-    l.pack()
-
-    #スケールの設定
-    s = tkinter.Scale(
-        master=root,
-        orient="horizon",
-        showvalue=False,
-        variable=var,
-        from_=0.0,
-        to=1.0,
-        resolution=0.001,
-        length=200,
-        )
-    s.pack()
-
-    #ボタンの設定
-    b = tkinter.Button(
-        text='Stop　JETBOT',
-        width=20,
-        command=stop_demo,
-        )
-    b.pack()
-"""
 #カメラupdate時の処理(Main処理定義)
 update_bar(1,'create a function that will get called whenever the cameras value changes')
 
@@ -166,9 +138,15 @@ def update(change):
         robot.forward(0.3)
     else:
         robot.left(0.3)
+        #capture debug 
+        #cv2.imwrite('wo_trait_block.jpg', change[0:224, 38:262])
+        #cv2.imwrite('wo_trait_without_clip.jpg', change)
+        #robot.stop()
+        #print('please press Ctrl + C in 60sec')
+        #time.sleep(60)
     softmax_lock.release()
     
-    time.sleep(0.067)
+    time.sleep(0.047)
 
 #処理とカメラの関連付け(処理実行)
 update_bar(1,'attach function to the camera for processing')
@@ -176,9 +154,12 @@ update_bar(1,'attach function to the camera for processing')
 #camera.observe(update, names='value')  # this attaches the 'update' function to the 'value' traitlet of our camera
 _ , csi_image=csi_cam.read() 
 update(csi_image) # we call the function once to intialize
+robot.stop()
 
 update_bar(1,'Complete!')
 
+print('Press Enter key to start')
+dummy=input()
 print('press Ctrl+C to stop robot')
 t1 = time.time()
 try:
@@ -193,7 +174,7 @@ try:
         cnt += 1        
         #time.sleep(5)
         #print('processing')
-        if t2 - t1 > 60:
+        if t2 - t1 > runtime:
             print("End by time")
             break
 
@@ -202,6 +183,7 @@ except KeyboardInterrupt:
 #停止すべき処理
 #need camera and motor proces release
 cnt = 0
+robot.stop()
 stop_demo()
 
 #GUIを表示し続ける

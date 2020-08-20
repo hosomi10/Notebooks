@@ -4,7 +4,12 @@ Collision_avoidance
   
 Create 'data' folder for pictures of 224 x 224 pixels and 300 x 300 pixels.  
 Upload alexnet, mobilenet, and tflite runtime classification folders in 'test' folder  
-  
+
+Update(8/20)
+===
+* Upload dataset in 7/10 (blocked and free image files)
+* Upload live_demo_wo_trait.py (time input and wait )
+
 Tasks(6/13)
 ===
 * Check memory pressure while executing alexnet,mobilenet,tflite on Jetbot.  
